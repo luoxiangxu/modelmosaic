@@ -1,0 +1,23 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "watch": "vite build --watch"
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "@vitejs/plugin-vue": "^4.6.2",
+        "axios": "^1.6.8",
+        "bootstrap": "^5.2.3",
+        "laravel-vite-plugin": "^1.0",
+        "sass": "^1.56.1",
+        "vite": "^5.0",
+        "vue": "^3.4.23"
+    },
+    "dependencies": {
+        "sweetalert2": "^11.10.8",
+        "vform": "^2.1.2"
+    }
+}
