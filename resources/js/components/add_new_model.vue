@@ -60,6 +60,16 @@ export default {
                     icon: 'success',
                     title: 'Item added successfully!'
                 })
+                this.form.reset();
+                image.value = null;
+                }).catch((error) => {
+                    if(error.response.status == 403){
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Opps',
+                        text: 'Something wrong, please refresh',
+                        })
+                    }
             })
         }
     },

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\item_table;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Support\Facades\DB;
 
 class ItemTableController extends Controller
 {
@@ -37,6 +38,12 @@ class ItemTableController extends Controller
                 'image' => $name_gen,
                 'added_date' => $added_date,
             ]);
+        }
+
+        public function get_items()
+        {
+            $items = DB::table('item_tables')->orderBy('id', 'desc')->paginate(5);
+            return $items;
         }
 
     }

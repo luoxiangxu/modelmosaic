@@ -37,7 +37,7 @@
               <a class="nav-link btn btn-light" href="/add_new_model">Add New Model</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link btn btn-light" href="/search_model">Search Model</a>
+              <a class="nav-link btn btn-light" href="/edit_model">Edit Model</a>
             </li>
             <li class="nav-item">
               <a class="nav-link btn btn-light" href="/about_me">About Me</a>

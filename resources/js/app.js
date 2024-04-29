@@ -9,6 +9,7 @@ import { createApp } from 'vue';
 import Swal from 'sweetalert2';
 window.Swal = Swal
 
+
 const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -32,9 +33,14 @@ const app = createApp({});
 import ExampleComponent from './components/ExampleComponent.vue';
 import login from './components/login.vue';
 import add_new_model from './components/add_new_model.vue';
+import edit_model from './components/edit_model.vue';
+import { Bootstrap5Pagination } from 'laravel-vue-pagination'
+
 app.component('example-component', ExampleComponent);
 app.component('vue-login', login);
 app.component('add-new-model', add_new_model);
+app.component('edit-model', edit_model);
+app.component('Bootstrap5Pagination', Bootstrap5Pagination);
 
 /**
  * The following block of code may be used to automatically register your
