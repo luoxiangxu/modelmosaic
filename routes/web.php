@@ -27,6 +27,12 @@ Route::get('/get_items', [App\Http\Controllers\ItemTableController::class, 'get_
 
 Route::post('/add_new_item', [App\Http\Controllers\ItemTableController::class, 'item_add'])->middleware('administrator');
 
+Route::post('/delete_item', [App\Http\Controllers\ItemTableController::class, 'item_delete'])->middleware('administrator');
+
+Route::post('/restore_item', [App\Http\Controllers\ItemTableController::class, 'item_restore'])->middleware('administrator');
+
+Route::post('/edit_item', [App\Http\Controllers\ItemTableController::class, 'edit_item'])->middleware('administrator');
+
 Route::get('/item_detail/{data}', [App\Http\Controllers\ItemTableController::class, 'item_detail'])->name('item_detail');
 
 Route::get('/logout',function(){ auth()->logout();return redirect('/');});

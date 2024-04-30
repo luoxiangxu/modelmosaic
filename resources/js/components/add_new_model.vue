@@ -6,18 +6,22 @@
                 <div class="col-sm-4 mt-3">
                     <form @submit.prevent="add()">
                         <div class="mb-3 mt-3">
-                            <input type="text" class="form-control" placeholder="name" v-model="form.item_name">
+                            <label class="mb-1">Item Name</label>
+                            <input type="text" class="form-control" v-model="form.item_name">
                             <div v-if="form.errors.has('item_name')" v-html="form.errors.get('item_name')"></div>
                         </div>
                         <div class="mb-3 mt-3">
-                            <input type="text" class="form-control" placeholder="price" v-model="form.price">
+                            <label class="mb-1">Price</label>
+                            <input type="text" class="form-control" v-model="form.price">
                             <div v-if="form.errors.has('price')" v-html="form.errors.get('price')"></div>
                         </div>
                         <div class="mb-3 mt-3">
-                            <input type="text" class="form-control" placeholder="description" v-model="form.description">
+                            <label class="mb-1">Description</label>
+                            <input type="text" class="form-control" v-model="form.description">
                             <div v-if="form.errors.has('description')" v-html="form.errors.get('description')"></div>
                         </div>
                         <div class="mb-3 mt-3">
+                            <label class="mb-1">Image</label>
                             <input type="file" class="form-control" id="image" @change="handle_image">
                             <div v-if="form.errors.has('image')" v-html="form.errors.get('image')"></div>
                         </div>
@@ -52,7 +56,7 @@ export default {
                     this.form.image = reader.result;
                 }
                 reader.readAsDataURL(file);  
-            },
+        },
         add(){
             this.form.post('/add_new_item')
             .then(() => {
