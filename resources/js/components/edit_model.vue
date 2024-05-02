@@ -1,5 +1,7 @@
 <template>
     <div class="container mt-3">
+        <i class="fa fa-search"></i>
+        <input class="mb-3" type="text" placeholder="Search by item name" v-model="search" @keyup="searching()">
         <table class="table">
         <thead>
             <tr>
@@ -13,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in items.data" :key="item.id">
+            <tr v-for="item in items.data" :key="item.id" v-show="search == ''">
                 <td>{{ item.id }}</td>
                 <td>{{ item.item_name }}</td>
                 <td>{{ item.price }}</td>
@@ -24,7 +26,8 @@
                     </button>
                 </td>
                 <td>{{ item.status }}</td>
-                <td><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#EditModal" @click="EditItem(item)">
+                <td>
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#EditModal" @click="EditItem(item)">
                         Edit
                     </button> /
                     <button type="button" class="btn btn-danger" @click="DeleteItem(item)" v-show="item.status == 'available'">
@@ -32,12 +35,39 @@
                     </button>
                     <button type="button" class="btn btn-warning" @click="RestoreItem(item)" v-show="item.status == 'deleted'">
                         Restore
-                    </button></td>
+                    </button>
+                </td>
             </tr>
-            <Bootstrap5Pagination
-                :data="items"
-                @pagination-change-page="getResults"
-            />
+            <tr v-for="item in search_items.data" :key="item.id" v-show="search != ''">
+                <td>{{ item.id }}</td>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.description }}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ImageModal" @click="getImage(item.image)">
+                        Image
+                    </button>
+                </td>
+                <td>{{ item.status }}</td>
+                <td>
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#EditModal" @click="EditItem(item)">
+                        Edit
+                    </button> /
+                    <button type="button" class="btn btn-danger" @click="DeleteItem(item)" v-show="item.status == 'available'">
+                        Delete
+                    </button>
+                    <button type="button" class="btn btn-warning" @click="RestoreItem(item)" v-show="item.status == 'deleted'">
+                        Restore
+                    </button>
+                </td>
+            </tr>
+            <div v-show="search == ''">
+                <Bootstrap5Pagination
+                    :data="items"
+                    @pagination-change-page="getResults"
+                />
+            </div>
+            
         </tbody>
         </table>
     </div>
@@ -111,6 +141,8 @@
             return{
                 image : null,
                 items : {},
+                search : '',
+                search_items : {},
                 form : new Form({
                 id : null,
                 item_name : null,
@@ -151,8 +183,12 @@
                 Toast.fire({
                     icon: 'success',
                     title: 'Item Updated Successfully'
-                    })
-                this.load_items();
+                })
+                if(this.search == ''){
+                    this.load_items();
+                }else{
+                    this.searching();
+                }
                 })
                 .catch(() => {
                     Swal.fire({
@@ -180,7 +216,11 @@
                     icon: 'success',
                     title: 'Item Delete Success'
                   })
-                  this.load_items();
+                if(this.search == ''){
+                    this.load_items();
+                }else{
+                    this.searching();
+                }
                 })
                 .catch((error) => {
                   if(error.response.status == 403){
@@ -212,7 +252,11 @@
                     icon: 'success',
                     title: 'Item Restore Success'
                   })
-                  this.load_items();
+                    if(this.search == ''){
+                        this.load_items();
+                    }else{
+                        this.searching();
+                    }
                 })
                 .catch((error) => {
                   if(error.response.status == 403){
@@ -225,6 +269,15 @@
                 })
               } 
             })
+            },
+            searching(){
+                let query = this.search
+                axios.get('/search_item?q=' + query)
+                .then((data) =>{
+                    this.search_items = data.data
+                })
+                .catch(() =>{
+                })
             },
         },
         created(){

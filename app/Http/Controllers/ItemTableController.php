@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class ItemTableController extends Controller
 {
+
     public function item_detail($data)
     {
         $item = item_table::findOrFail($data);
@@ -45,6 +46,12 @@ class ItemTableController extends Controller
         public function get_items()
         {
             $items = DB::table('item_tables')->orderBy('id', 'desc')->paginate(10);
+            return $items;
+        }
+
+        public function user_get_items()
+        {
+            $items = item_table::where('status','available')->orderBy('id','desc')->paginate(10);
             return $items;
         }
 
@@ -90,5 +97,31 @@ class ItemTableController extends Controller
             $item->status = 'available';
             $item->save();
         }
+
+        public function search_item()
+        {
+            if($search = \Request::get('q')){
+                $items = item_table::where([
+                    ['item_name','LIKE', "%$search%"],
+                ])->orderBy('created_at', 'desc')->paginate();
+            }else{
+                $items = DB::table('item_tables')->orderBy('id', 'desc')->paginate(10);
+            }
+            return $items;
+        }
+
+        public function user_search_item()
+        {
+            if($search = \Request::get('q')){
+                $items = item_table::where([
+                    ['item_name','LIKE', "%$search%"],
+                    ['status','available'],
+                ])->orderBy('created_at', 'desc')->paginate();
+            }else{
+                $items = item_table::where('status','available')->orderBy('id','desc')->paginate(10);
+            }
+            return $items;
+        }
+
 
     }

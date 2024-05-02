@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $items = item_table::get()->where('status','available');
+        $items = item_table::where('status','available')->orderBy('created_at','desc')->get();
         return view('welcome', compact("items"));
     }
 }

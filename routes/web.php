@@ -15,6 +15,11 @@ Route::get('/about_me', function () {
     return view('user.about_me');
 });
 
+Route::get('/search_model', function () {
+    return view('user.search_model');
+});
+
+
 Route::get('/add_new_model', function () {
     return view('admin.add_new_model');
 })->middleware('administrator');
@@ -23,7 +28,13 @@ Route::get('/edit_model', function () {
     return view('admin.edit_model');
 })->middleware('administrator');
 
-Route::get('/get_items', [App\Http\Controllers\ItemTableController::class, 'get_items']);
+Route::get('/get_items', [App\Http\Controllers\ItemTableController::class, 'get_items'])->middleware('administrator');
+
+Route::get('/user/get_items', [App\Http\Controllers\ItemTableController::class, 'user_get_items']);
+
+Route::get('/search_item', [App\Http\Controllers\ItemTableController::class, 'search_item'])->middleware('administrator');
+
+Route::get('/user/search_item', [App\Http\Controllers\ItemTableController::class, 'user_search_item']);
 
 Route::post('/add_new_item', [App\Http\Controllers\ItemTableController::class, 'item_add'])->middleware('administrator');
 

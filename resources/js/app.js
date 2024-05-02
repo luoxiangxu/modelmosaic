@@ -36,13 +36,15 @@ import ExampleComponent from './components/ExampleComponent.vue';
 import login from './components/login.vue';
 import add_new_model from './components/add_new_model.vue';
 import edit_model from './components/edit_model.vue';
-import { Bootstrap5Pagination } from 'laravel-vue-pagination'
+import { Bootstrap5Pagination } from 'laravel-vue-pagination';
+import search_model from './components/search_model.vue';
 
 app.component('example-component', ExampleComponent);
 app.component('vue-login', login);
 app.component('add-new-model', add_new_model);
 app.component('edit-model', edit_model);
 app.component('Bootstrap5Pagination', Bootstrap5Pagination);
+app.component('search-model', search_model);
 
 /**
  * The following block of code may be used to automatically register your
