@@ -7,6 +7,7 @@ use App\Models\item_table;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ItemTableController extends Controller
 {
@@ -24,11 +25,15 @@ class ItemTableController extends Controller
             'price' => 'required|numeric',
             'description' => 'required',
             'image' => 'required',
+            'model_file' => 'required',
         ]);
             $manager = new ImageManager(new Driver());
             $img = $manager->read($request->image);
-            $name_gen = rand().'.'.explode('/',explode(':', substr($request->image,0,strpos($request->image, ';')))[1])[1];
-            $img->toPng()->save(public_path('images/').$name_gen);
+            $image_name_gen = rand().'.'.explode('/',explode(':', substr($request->image,0,strpos($request->image, ';')))[1])[1];
+            $img->toPng()->save(public_path('images/').$image_name_gen);
+
+            $file_name_gen = rand().'.'.explode('/',explode(':', substr($request->model_file,0,strpos($request->model_file, ';')))[1])[1];
+            Storage::disk('local')->put('/public/models/'.$file_name_gen, file_get_contents($request->model_file));
 
             date_default_timezone_set("Asia/Yangon");
             $added_date = date("Y-m-d h:i:sa");
@@ -37,7 +42,8 @@ class ItemTableController extends Controller
                 'item_name'=>$request->item_name,
                 'price' => $request->price,
                 'description' => $request->description,
-                'image' => $name_gen,
+                'image' => $image_name_gen,
+                'file' => $file_name_gen,
                 'added_date' => $added_date,
                 'status' => $status,
             ]);
@@ -62,6 +68,7 @@ class ItemTableController extends Controller
                 'price' => 'required|numeric',
                 'description' => 'required',
                 'image' => 'Sometimes',
+                'model_file' => 'Sometimes',
             ]);
 
             $item = item_table::findOrFail($request->id);
@@ -77,11 +84,18 @@ class ItemTableController extends Controller
                 $name_gen = rand().'.'.explode('/',explode(':', substr($request->edit_image,0,strpos($request->edit_image, ';')))[1])[1];
                 $img->toPng()->save(public_path('images/').$name_gen);
                 $item->image = $name_gen;
-                $item->save();
-            }else{
-                $item->save();
             }
-            
+
+            if(isset($request->model_file)){
+                $old_model_file_name = $item->file;
+                Storage::disk('local')->delete('/public/models/'.$old_model_file_name);
+
+                $new_model_file_name = rand().'.'.explode('/',explode(':', substr($request->model_file,0,strpos($request->model_file, ';')))[1])[1];
+                Storage::disk('local')->put('/public/models/'.$new_model_file_name, file_get_contents($request->model_file));
+
+                $item->file = $new_model_file_name;
+            }  
+            $item->save();         
         }
 
         public function item_delete(Request $request)

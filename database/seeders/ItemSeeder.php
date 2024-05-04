@@ -19,6 +19,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon1',
             'added_date' => '4/23/2024',
             'image' => 'dragon1.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -28,6 +29,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon2',
             'added_date' => '4/23/2024',
             'image' => 'dragon2.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -37,6 +39,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon3',
             'added_date' => '4/23/2024',
             'image' => 'dragon3.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -46,6 +49,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon1',
             'added_date' => '4/23/2024',
             'image' => 'dragon1.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -55,6 +59,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon2',
             'added_date' => '4/23/2024',
             'image' => 'dragon2.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -64,6 +69,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon3',
             'added_date' => '4/23/2024',
             'image' => 'dragon3.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -73,6 +79,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon1',
             'added_date' => '4/23/2024',
             'image' => 'dragon1.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -82,6 +89,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon2',
             'added_date' => '4/23/2024',
             'image' => 'dragon2.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -91,6 +99,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon3',
             'added_date' => '4/23/2024',
             'image' => 'dragon3.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -100,6 +109,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon1',
             'added_date' => '4/23/2024',
             'image' => 'dragon1.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -109,6 +119,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon2',
             'added_date' => '4/23/2024',
             'image' => 'dragon2.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
 
@@ -118,6 +129,7 @@ class ItemSeeder extends Seeder
             'description' => '3d dragon3',
             'added_date' => '4/23/2024',
             'image' => 'dragon3.jpg',
+            'file' => 'female head.blend',
             'status' => 'available'
         ]);
     }

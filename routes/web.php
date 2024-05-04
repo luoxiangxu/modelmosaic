@@ -19,6 +19,10 @@ Route::get('/search_model', function () {
     return view('user.search_model');
 });
 
+Route::get('/purchase_record', function () {
+    return view('user.purchase_record');
+})->name('purchase_record');
+
 
 Route::get('/add_new_model', function () {
     return view('admin.add_new_model');
@@ -47,6 +51,9 @@ Route::post('/edit_item', [App\Http\Controllers\ItemTableController::class, 'edi
 Route::get('/item_detail/{data}', [App\Http\Controllers\ItemTableController::class, 'item_detail'])->name('item_detail');
 
 Route::get('/logout',function(){ auth()->logout();return redirect('/');});
+
+Route::get('/session/{id}', [App\Http\Controllers\StripeController::class, 'session'])->name('session');
+
 
 Auth::routes();
 Auth::routes(['verify' => true]);

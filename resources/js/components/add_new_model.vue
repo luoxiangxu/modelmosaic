@@ -25,6 +25,11 @@
                             <input type="file" class="form-control" id="image" @change="handle_image">
                             <div v-if="form.errors.has('image')" v-html="form.errors.get('image')"></div>
                         </div>
+                        <div class="mb-3 mt-3">
+                            <label class="mb-1">Model File</label>
+                            <input type="file" class="form-control" id="model_file" @change="handle_file">
+                            <div v-if="form.errors.has('model_file')" v-html="form.errors.get('model_file')"></div>
+                        </div>
                         <button class="btn btn-secondary"type="submit">Add</button>
                     </form> 
                 </div>
@@ -45,6 +50,7 @@ export default {
                 price : null,
                 description : null,
                 image : null,
+                model_file : null,
             })
         }
     },
@@ -54,6 +60,14 @@ export default {
                 let reader = new FileReader();
                 reader.onloadend = (file)=> {
                     this.form.image = reader.result;
+                }
+                reader.readAsDataURL(file);  
+        },
+        handle_file(element){
+                let file = element.target.files[0];
+                let reader = new FileReader();
+                reader.onloadend = (file)=> {
+                    this.form.model_file = reader.result;
                 }
                 reader.readAsDataURL(file);  
         },

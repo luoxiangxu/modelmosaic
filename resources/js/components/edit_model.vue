@@ -119,7 +119,12 @@
                             <label class="mb-1">Image</label>
                             <input type="file" class="form-control" id="edit_image" @change="handle_image">
                             <div v-if="form.errors.has('edit_image')" v-html="form.errors.get('edit_image')"></div>
-                        </div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                            <label class="mb-1">Model File</label>
+                            <input type="file" class="form-control" id="model_file" @change="handle_file">
+                            <div v-if="form.errors.has('model_file')" v-html="form.errors.get('model_file')"></div>
+                    </div>
                     <button class="btn btn-info"type="submit">Edit</button>
                 </form>
             </div>
@@ -150,6 +155,7 @@
                 description : null,
                 status : null,
                 edit_image : null,
+                model_file : null,
                 })
             }
         },
@@ -174,6 +180,14 @@
                 let reader = new FileReader();
                 reader.onloadend = (file)=> {
                     this.form.edit_image = reader.result;
+                }
+                reader.readAsDataURL(file);  
+            },
+            handle_file(element){
+                let file = element.target.files[0];
+                let reader = new FileReader();
+                reader.onloadend = (file)=> {
+                    this.form.model_file = reader.result;
                 }
                 reader.readAsDataURL(file);  
             },
