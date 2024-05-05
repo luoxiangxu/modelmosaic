@@ -25,7 +25,7 @@
                         <p class="card-text mt-3">Item Description : {{$item->description}}</p>
                         <p class="card-text">Price : ${{$item->price}}</p>
                         <p class="card-text">Added Date : {{$item->added_date}}</p>
-                        <a href="{{route('session', $item)}}">
+                        <a href="{{route('stripe', $item)}}">
                                 <button type="button" class="btn btn-primary">Buy This Model</button>
                         </a>
                 </div>

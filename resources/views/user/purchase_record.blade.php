@@ -16,6 +16,6 @@
 
 @section('content')
 <div id="app"> 
-      
+      <purchase-record />
 </div>
 @stop

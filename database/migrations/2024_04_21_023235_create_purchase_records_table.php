@@ -15,7 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('item_id');
-            $table->float('total_payment');
+            $table->string('user_name');
+            $table->string('item_name');
+            $table->string('price');
+            $table->string('image');
+            $table->string('currency');
+            $table->string('payment_email');
+            $table->string('payment_method');
+            $table->string('payment_status');
             $table->string('purchase_date');
             $table->timestamps();
         });

@@ -9,7 +9,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/home', function () {
     return view('home');
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/about_me', function () {
     return view('user.about_me');
@@ -34,9 +34,13 @@ Route::get('/edit_model', function () {
 
 Route::get('/get_items', [App\Http\Controllers\ItemTableController::class, 'get_items'])->middleware('administrator');
 
+Route::get('/get_purchase_record', [App\Http\Controllers\PurchaseRecordController::class, 'get_purchase_record']);
+
 Route::get('/user/get_items', [App\Http\Controllers\ItemTableController::class, 'user_get_items']);
 
 Route::get('/search_item', [App\Http\Controllers\ItemTableController::class, 'search_item'])->middleware('administrator');
+
+Route::get('/user/search_purchase_record', [App\Http\Controllers\PurchaseRecordController::class, 'user_search_purchase_record']);
 
 Route::get('/user/search_item', [App\Http\Controllers\ItemTableController::class, 'user_search_item']);
 
@@ -52,7 +56,11 @@ Route::get('/item_detail/{data}', [App\Http\Controllers\ItemTableController::cla
 
 Route::get('/logout',function(){ auth()->logout();return redirect('/');});
 
-Route::get('/session/{id}', [App\Http\Controllers\StripeController::class, 'session'])->name('session');
+Route::get('/stripe/{id}', [App\Http\Controllers\StripeController::class, 'stripe'])->name('stripe');
+
+Route::get('/success', [App\Http\Controllers\StripeController::class, 'success'])->name('success');
+
+Route::get('/cancel', [App\Http\Controllers\StripeController::class, 'cancel'])->name('cancel');
 
 
 Auth::routes();
