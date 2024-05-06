@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('item_id');
+            $table->string('user_name');
             $table->string('comment');
             $table->string('commented_date');
             $table->timestamps();

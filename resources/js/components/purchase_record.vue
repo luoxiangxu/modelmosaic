@@ -5,7 +5,6 @@
         <table class="table">
         <thead>
             <tr>
-                <th scope="col" class="table-primary">ID</th>
                 <th scope="col" class="table-primary">Item Name</th>
                 <th scope="col" class="table-primary">Price</th>
                 <th scope="col" class="table-primary">Image</th>
@@ -14,11 +13,11 @@
                 <th scope="col" class="table-primary">Payment Method</th>
                 <th scope="col" class="table-primary">Payment Status</th>
                 <th scope="col" class="table-primary">Purchase Date</th>
+                <th scope="col" class="table-primary">Detail Page</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="item in items.data" :key="item.id" v-show="search == ''">
-                <td>{{ item.id }}</td>
                 <td>{{ item.item_name }}</td>
                 <td>{{ item.price }}</td>
                 <td>
@@ -31,9 +30,15 @@
                 <td>{{ item.payment_method }}</td>
                 <td>{{ item.payment_status }}</td>
                 <td>{{ item.purchase_date }}</td>
+                <td>
+                    <a class="" :href="'/item_detail/' +item.item_id">
+                        <button type="button" class="btn btn-info">
+                            Detail Page
+                        </button>
+                    </a>
+                </td>
             </tr>
             <tr v-for="item in search_items.data" :key="item.id" v-show="search != ''">
-                <td>{{ item.id }}</td>
                 <td>{{ item.item_name }}</td>
                 <td>{{ item.price }}</td>
                 <td>
@@ -130,9 +135,6 @@
                 })
                 .catch(() =>{
                 })
-            },
-            DetailPage(id){
-                
             },
         },
         created(){

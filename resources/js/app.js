@@ -39,6 +39,7 @@ import edit_model from './components/edit_model.vue';
 import { Bootstrap5Pagination } from 'laravel-vue-pagination';
 import search_model from './components/search_model.vue';
 import purchase_record from './components/purchase_record.vue';
+import comment from './components/comment.vue';
 
 app.component('example-component', ExampleComponent);
 app.component('vue-login', login);
@@ -47,6 +48,7 @@ app.component('edit-model', edit_model);
 app.component('Bootstrap5Pagination', Bootstrap5Pagination);
 app.component('search-model', search_model);
 app.component('purchase-record', purchase_record);
+app.component('comment', comment);
 
 /**
  * The following block of code may be used to automatically register your

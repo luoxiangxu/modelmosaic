@@ -5,7 +5,6 @@
         <table class="table">
         <thead>
             <tr>
-                <th scope="col" class="table-primary">ID</th>
                 <th scope="col" class="table-primary">Item_Name</th>
                 <th scope="col" class="table-primary">Price</th>
                 <th scope="col" class="table-primary">Description</th>
@@ -15,7 +14,6 @@
         </thead>
         <tbody>
             <tr v-for="item in items.data" :key="item.id" v-show="search == ''">
-                <td>{{ item.id }}</td>
                 <td>{{ item.item_name }}</td>
                 <td>{{ item.price }}</td>
                 <td>{{ item.description }}</td>
@@ -33,7 +31,6 @@
                 </td>
             </tr>
             <tr v-for="item in search_items.data" :key="item.id" v-show="search != ''">
-                <td>{{ item.id }}</td>
                 <td>{{ item.item_name }}</td>
                 <td>{{ item.price }}</td>
                 <td>{{ item.description }}</td>
@@ -130,9 +127,6 @@
                 })
                 .catch(() =>{
                 })
-            },
-            DetailPage(id){
-                
             },
         },
         created(){

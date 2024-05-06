@@ -15,6 +15,7 @@ class ItemTableController extends Controller
     public function item_detail($data)
     {
         $item = item_table::findOrFail($data);
+        session()->put('comment_item_id', $item->id);
         return view('user.item_detail', compact("item"));
     }
 

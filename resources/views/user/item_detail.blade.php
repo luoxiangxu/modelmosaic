@@ -28,9 +28,16 @@
                         <a href="{{route('stripe', $item)}}">
                                 <button type="button" class="btn btn-primary">Buy This Model</button>
                         </a>
+                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CommentModal">Post Comment</a>
                 </div>
                 <div class="col-sm-3 mt-3">
                 </div>
         </div>
 </div> 
+@stop
+
+@section('comment')
+<div id="app"> 
+      <comment />
+</div>
 @stop

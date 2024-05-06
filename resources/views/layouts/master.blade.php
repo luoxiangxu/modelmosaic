@@ -93,6 +93,10 @@
       <div id="content">
         @yield('content')
       </div>
+
+      <div id="comment">
+        @yield('comment')
+      </div>
       
     </main>
     <!-- END Main container -->
