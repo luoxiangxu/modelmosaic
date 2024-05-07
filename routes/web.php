@@ -56,7 +56,7 @@ Route::get('/item_detail/{data}', [App\Http\Controllers\ItemTableController::cla
 
 Route::get('/logout',function(){ auth()->logout();return redirect('/');});
 
-Route::get('/stripe/{id}', [App\Http\Controllers\StripeController::class, 'stripe'])->name('stripe');
+Route::get('/stripe/{id}', [App\Http\Controllers\StripeController::class, 'stripe'])->middleware(['auth', 'verified'])->name('stripe');
 
 Route::get('/success', [App\Http\Controllers\StripeController::class, 'success'])->name('success');
 
