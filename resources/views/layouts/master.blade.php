@@ -77,7 +77,7 @@
           <a class="nav-link btn btn-light" href="/about_me">About Me</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn btn-light" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+          <a class="nav-link btn btn-light" href="/login">Login</a>
         </li>
       @endif
     </ul>
