@@ -84,6 +84,12 @@ export default {
                         title: 'Opps',
                         text: 'You have to buy the product to post comment',
                         })
+                    }else if(error.response.status == 401){
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Opps',
+                        text: 'You have to login to post the comment',
+                        })
                     }
             })
         }

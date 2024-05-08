@@ -64,7 +64,7 @@ Route::get('/cancel', [App\Http\Controllers\StripeController::class, 'cancel'])-
 
 Route::get('/get_comments', [App\Http\Controllers\UserCommentTableController::class, 'get_comments']);
 
-Route::post('/post_comment', [App\Http\Controllers\UserCommentTableController::class, 'post_comment']);
+Route::post('/post_comment', [App\Http\Controllers\UserCommentTableController::class, 'post_comment'])->middleware(['auth', 'verified']);
 
 Auth::routes();
 Auth::routes(['verify' => true]);
