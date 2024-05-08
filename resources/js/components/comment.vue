@@ -17,7 +17,6 @@
                     />
                 </div>
                 <div class="col-sm-3 mt-3">
-                    <vue-login />
                 </div>
         </div>
     </div>
